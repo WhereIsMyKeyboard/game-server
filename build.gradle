@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+// 中央仓库，默认是maven的中央仓库
+repositories {
+    // 默认的速度慢，指定国内的中央仓库
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+    mavenCentral()
+}
+
+// 外部依赖
+dependencies {
+    compile(
+            'io.netty:netty-all:4.1.10.Final'
+    )
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
