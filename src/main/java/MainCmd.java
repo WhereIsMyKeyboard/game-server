@@ -1,10 +1,8 @@
-import org.apache.log4j.Logger;
+import bootstrap.Application;
 
 public class MainCmd {
 
-  private static Logger logger = Logger.getLogger(MainCmd.class);
-
-  public static void main(String[] args) {
-    logger.info("server run");
+  public static void main(String[] args) throws InterruptedException {
+    Application.start();
   }
 }
