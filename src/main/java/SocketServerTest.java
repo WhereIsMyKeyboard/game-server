@@ -1,3 +1,5 @@
+import bootstrap.TestMsg;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -15,7 +17,7 @@ public class SocketServerTest {
 
   private static Logger logger = Logger.getLogger(SocketServerTest.class);
   private static final String IP = "127.0.0.1";
-  private static final int PORT = 8888;
+  private static final int PORT = 8881;
 
   private static final EventLoopGroup group = new NioEventLoopGroup();
 
@@ -45,10 +47,10 @@ public class SocketServerTest {
     // 连接服务端
     Channel ch = bootstrap.connect(IP, PORT).sync().channel();
 
+    ObjectMapper objectMapper = new ObjectMapper();
+    String testMsg = objectMapper.writeValueAsString(new TestMsg("jackson test"));
+    ch.writeAndFlush(testMsg + "\r\n");
 
-    ch.writeAndFlush("客户端数据" + "\r\n");
-
-    logger.info("向Socket服务器发送数据:" + "客户端数据" + "\r\n");
   }
 
   public static void main(String[] args) {

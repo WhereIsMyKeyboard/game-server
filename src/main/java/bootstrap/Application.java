@@ -17,7 +17,7 @@ public final class Application {
 
   private static Logger logger = Logger.getLogger(Application.class);
   private static final String IP = "127.0.0.1";
-  private static final int PORT = 8888;
+  private static final int PORT = 8881;
   private final static ServerBootstrap bootstrap = new ServerBootstrap();
   // 处理TCP请求
   private static final EventLoopGroup bossGroup = new NioEventLoopGroup(1);
